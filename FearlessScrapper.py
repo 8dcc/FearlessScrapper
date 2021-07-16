@@ -5,7 +5,7 @@ from colorama import Fore, Style
 from bs4 import BeautifulSoup
 
 #######################
-ListOnly = False      # Boolean. Will download files if true
+ListOnly = False      # Boolean. Will download files if false
 Debug = False         # Boolean. Will display aditional information if true
 #######################
 
