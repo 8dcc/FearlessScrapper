@@ -1,6 +1,6 @@
 # https://github.com/r4v10l1/FearlessScrapper
 
-import requests, wget
+import requests
 from colorama import Fore, Style
 from bs4 import BeautifulSoup
 
