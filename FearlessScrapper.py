@@ -45,7 +45,7 @@ def main():
             print(" TITLE: " + title)
 
         for line in r.text.split("\n"):
-            if download_identifier in line:  # Found an atachment
+            if download_identifier in line:  # Found an attachment
                 result = "https://fearlessrevolution.com" + line.split("href=\".")[1].split("&")[0]
                 SuccessText("Result found: ", result)
                 if not ListOnly:  # If you want to download it
