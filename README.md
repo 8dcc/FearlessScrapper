@@ -7,6 +7,7 @@ Searches for attachments and downloads them (or only displays them).
 ```bash
 git clone https://github.com/r4v10l1/FearlessScrapper
 cd FearlessScrapper
+pip install -r requirements.txt
 python FearlessScrapper.py
 ```
 
