@@ -1,2 +1,2 @@
-# FearlessScrapper
-File scrapper for https://fearlessrevolution.com (Cheat Egine tables)
+# Fearless scrapper
+File scrapper for [fearlessrevolution](https://fearlessrevolution.com) (Cheat Egine tables)
