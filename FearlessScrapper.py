@@ -11,8 +11,12 @@ Debug = False         # Boolean. Will display aditional information if true
 
 def InfoInput(text):
     return input(f"{Style.RESET_ALL} {Style.BRIGHT}[{Fore.BLUE}i{Style.RESET_ALL}{Style.BRIGHT}] {Fore.BLUE}{text}{Style.RESET_ALL}")
+
 def SuccessText(text1, text2):
     print(f"{Style.RESET_ALL} {Style.BRIGHT}[{Fore.GREEN}+{Style.RESET_ALL}{Style.BRIGHT}] {Fore.GREEN}{text1}{Style.RESET_ALL}{Style.BRIGHT}{text2}{Style.RESET_ALL}")
+
+def ErrorText(text1, text2):
+    print(f"{Style.RESET_ALL} {Style.BRIGHT}[{Fore.RED}!{Style.RESET_ALL}{Style.BRIGHT}] {Fore.RED}{text1}{Style.RESET_ALL}{Style.BRIGHT}{text2}{Style.RESET_ALL}")
 
 def main():
     # Define some variables
@@ -49,12 +53,15 @@ def main():
             if download_identifier in line:
                 result = "https://fearlessrevolution.com" + line.split("href=\".")[1].split("&")[0]
                 SuccessText("Result found: ", result)
-                
+
                 # If you want to download it
                 if not ListOnly:
                     downloader = requests.get(result, allow_redirects=False)                # Get the file
-                    with open(str(download_count) + ".ct", "w", encoding="utf-8") as w:     # Write the file with encoding
-                        w.write(downloader.text)
+                    try:
+                        with open(str(download_count) + ".ct", "w") as w:     # Write the file with encoding
+                            w.write(downloader.text)
+                    except Exception:
+                        ErrorText("Could not write to file for URL: ", result)
                     download_count += 1     # For the file names
 
         page_count += 1
