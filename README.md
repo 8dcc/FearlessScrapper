@@ -1,7 +1,7 @@
 # Fearless scrapper
 **File scrapper for [fearlessrevolution](https://fearlessrevolution.com) (Cheat Egine tables)**
 
-Searches for attachments and downloads them (or only displays them).
+Searches for attachments in a specified URL and displays or downloads them (depending on your settings).
 
 ### Installation
 ```bash
@@ -13,5 +13,5 @@ python FearlessScrapper.py
 
 ### Configuration
 You can change the folowing variables:
-* ListOnly: Boolean. Will download files if false.
-* Debug: Boolean. Will display aditional information if true.
+* `ListOnly`: Boolean. Will download files if false.
+* `Debug`: Boolean. Will display aditional information if true.
