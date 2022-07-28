@@ -28,13 +28,13 @@ def main():
     if "&start=" in user_url:
         user_url = user_url.split("&start=")[0]
 
-    while True:  # Loop until you reach the last page
-        URL = user_url + "&start=" + str(page_count * 15)  # The URL counts posts, not pages, so you multiply the page * 15 posts per page.
-        r = requests.get(URL, allow_redirects=False)
-        soup = BeautifulSoup(r.text, features="html.parser")  # For the title
+    while True:     # Loop until you reach the last page
+        URL = user_url + "&start=" + str(page_count * 15)       # The URL counts posts, not pages, so you multiply the page * 15 posts per page.
+        r = requests.get(URL, allow_redirects=False)            # Get request
+        soup = BeautifulSoup(r.text, features="html.parser")    # For the title
 
         title = soup.title
-        if title_old == title:  # If two titles are the same, there are no pages left
+        if title_old == title:      # If two titles are the same, there are no pages left
             print()
             SuccessText("Done! Exiting...", "")
             exit(1)
@@ -45,14 +45,17 @@ def main():
             print(" TITLE: " + title)
 
         for line in r.text.split("\n"):
-            if download_identifier in line:  # Found an attachment
+            # Found an attachment
+            if download_identifier in line:
                 result = "https://fearlessrevolution.com" + line.split("href=\".")[1].split("&")[0]
                 SuccessText("Result found: ", result)
-                if not ListOnly:  # If you want to download it
-                    downloader = requests.get(result, allow_redirects=False)  # Get the file
-                    with open(str(download_count) + ".ct", "w") as w:  # Write the file
+                
+                # If you want to download it
+                if not ListOnly:
+                    downloader = requests.get(result, allow_redirects=False)                # Get the file
+                    with open(str(download_count) + ".ct", "w", encoding="utf-8") as w:     # Write the file with encoding
                         w.write(downloader.text)
-                    download_count += 1  # For the file names
+                    download_count += 1     # For the file names
 
         page_count += 1
 
